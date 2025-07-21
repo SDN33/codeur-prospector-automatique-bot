@@ -14,7 +14,161 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      message_templates: {
+        Row: {
+          category: string
+          content: string
+          created_at: string
+          id: string
+          name: string
+          subject: string
+          updated_at: string
+          user_id: string | null
+        }
+        Insert: {
+          category?: string
+          content: string
+          created_at?: string
+          id?: string
+          name: string
+          subject: string
+          updated_at?: string
+          user_id?: string | null
+        }
+        Update: {
+          category?: string
+          content?: string
+          created_at?: string
+          id?: string
+          name?: string
+          subject?: string
+          updated_at?: string
+          user_id?: string | null
+        }
+        Relationships: []
+      }
+      projects: {
+        Row: {
+          budget: string | null
+          client_info: Json | null
+          created_at: string
+          description: string | null
+          id: string
+          posted_date: string | null
+          scraped_at: string
+          skills: string[] | null
+          title: string
+          updated_at: string
+          url: string | null
+        }
+        Insert: {
+          budget?: string | null
+          client_info?: Json | null
+          created_at?: string
+          description?: string | null
+          id?: string
+          posted_date?: string | null
+          scraped_at?: string
+          skills?: string[] | null
+          title: string
+          updated_at?: string
+          url?: string | null
+        }
+        Update: {
+          budget?: string | null
+          client_info?: Json | null
+          created_at?: string
+          description?: string | null
+          id?: string
+          posted_date?: string | null
+          scraped_at?: string
+          skills?: string[] | null
+          title?: string
+          updated_at?: string
+          url?: string | null
+        }
+        Relationships: []
+      }
+      prospects: {
+        Row: {
+          contact_date: string | null
+          created_at: string
+          id: string
+          message_sent: string | null
+          notes: string | null
+          project_id: string | null
+          response_received: string | null
+          status: string
+          updated_at: string
+          user_id: string | null
+        }
+        Insert: {
+          contact_date?: string | null
+          created_at?: string
+          id?: string
+          message_sent?: string | null
+          notes?: string | null
+          project_id?: string | null
+          response_received?: string | null
+          status?: string
+          updated_at?: string
+          user_id?: string | null
+        }
+        Update: {
+          contact_date?: string | null
+          created_at?: string
+          id?: string
+          message_sent?: string | null
+          notes?: string | null
+          project_id?: string | null
+          response_received?: string | null
+          status?: string
+          updated_at?: string
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "prospects_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "projects"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      scraping_sessions: {
+        Row: {
+          completed_at: string | null
+          error_message: string | null
+          id: string
+          projects_found: number | null
+          search_criteria: Json | null
+          started_at: string
+          status: string
+          user_id: string | null
+        }
+        Insert: {
+          completed_at?: string | null
+          error_message?: string | null
+          id?: string
+          projects_found?: number | null
+          search_criteria?: Json | null
+          started_at?: string
+          status?: string
+          user_id?: string | null
+        }
+        Update: {
+          completed_at?: string | null
+          error_message?: string | null
+          id?: string
+          projects_found?: number | null
+          search_criteria?: Json | null
+          started_at?: string
+          status?: string
+          user_id?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

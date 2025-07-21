@@ -1,1 +1,4 @@
 project_id = "tyeryhdkwflrwsncqadg"
+
+[functions.scrape-codeur]
+verify_jwt = false
